@@ -70,14 +70,74 @@ $$
 
 로 간단하게 나타낼 수 있다.
 
-#### Helloworld
+
+
+#### Hello world!
 
 ```
 cd ceres-bin/bin
 ./helloworld
 ```
 
+ceres-solver에서 가장 간단한 예제인 Hello wolrd를 통해 10-x 함수값이 최소가 되는 x값을 구해보자.
+
+```c++
+struct CostFunctor {
+  template <typename T>
+  bool operator()(const T* const x, T* residual) const {
+    residual[0] = 10.0 - x[0];
+    return true;
+  }
+};
+```
+
+cost function $f(x)=10-x$로 설정하는 부분이다. template을 써서 어떤 input과 output이 들어오던 T 형태로 받게 된다. residual 값이 double일수도 있고, vector 형태일수도 있기 때문이다. 
+
+
+
+```c++
+int main(int argc, char** argv) {
+  google::InitGoogleLogging(argv[0]);
+
+  // The variable to solve for with its initial value. It will be
+  // mutated in place by the solver.
+  double x = 0.5;
+  const double initial_x = x;
+
+```
+
+initial_x 값을 0.5로 설정한다.
+
+
+
+```c++
+  // Build the problem.
+  Problem problem;
+
+  // Set up the only cost function (also known as residual). This uses
+  // auto-differentiation to obtain the derivative (jacobian).
+  CostFunction* cost_function =
+      new AutoDiffCostFunction<CostFunctor, 1, 1>(new CostFunctor);
+  problem.AddResidualBlock(cost_function, nullptr, &x);
+```
+
+Problem을 선언하고, cost_function에 AutoDiffCostFunction을 통해 미분을 해준다. 만약 residual에 여러 값이 있다면 T=Jet으로 jacobian을 나타내게 된다. 
+
+이 cost_function을 ResidualBlock에 넣어 풀게 되면,
+
+```c++
+  // Run the solver!
+  Solver::Options options;
+  options.minimizer_progress_to_stdout = true;
+  Solver::Summary summary;
+  Solve(options, &problem, &summary);
+
+  std::cout << summary.BriefReport() << "\n";
+  std::cout << "x : " << initial_x << " -> " << x << "\n";
+  return 0;
+}
+```
+
 ![image](https://user-images.githubusercontent.com/67038853/114900658-0d704a80-9e4f-11eb-9040-e6761dfef536.png)
 
-
-
+iteration 2번만에 x값이 10이 나오는 것을 볼 수 있다.
