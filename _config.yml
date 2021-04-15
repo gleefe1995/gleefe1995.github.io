@@ -1,7 +1,7 @@
 # Site settings
 title: A Flower Is Not A Flower
 url: "https://gleefe1995.github.io"    # the protocol and hostname of your site, eg. `http://laobubu.github.io`
-baseurl: "/jekyll-theme-EasyBook" # the prefix of your site uri, eg. `"/jekyll-theme-EasyBook"` or empty string `""`
+baseurl: "" # the prefix of your site uri, eg. `"/jekyll-theme-EasyBook"` or empty string `""`
 #timezone: Asia/Chongqing
 description: >
   Things that I've learned
