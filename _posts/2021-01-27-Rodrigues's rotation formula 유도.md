@@ -4,6 +4,7 @@ title: "Rodrigues' rotation formula 유도"
 date: 2021-01-09 21:08:30 -0400
 categories: Rodrigues
 use_math: true
+comments: true
 ---
 
 # Rodrigues' rotation formula
@@ -11,6 +12,8 @@ use_math: true
   Perspective-n-Points Problem을 공부하다가 Opencv의 solvePnP 함수에서 output으로 나오는 형태가 Rodrigues's rotation formula를 이용한 표현법으로 나온다고 해서 무엇인지 찾아보았다.
 
   3차원 회전을 다룰 때, Rodrigues' rotation formula는 한 벡터가 회전할 때 회전 축과 회전 각도가 있으면 다음과 같은 식으로 회전 후의 벡터를 표현하는 방법이다. 
+
+
 $$
 v_{rot}=vcos\theta+(1-cos\theta)(k\cdot v)k+(k\times v)sin\theta 
 $$
@@ -33,9 +36,12 @@ v=v_{\parallel}+v_{\perp}
 $$
 
 여기서 $v_{\parallel}=(v \cdot k)k$ 으로 나타낼 수 있고,
+
+
 $$
 v_{\perp}=v-v_{\parallel}=v-(k \cdot v)k = -k \times(k \times v)
 $$
+
 으로 나타낼 수 있다. 
 
 $v_{\parallel}$은 내적의 정의를 생각하면 쉽게 구할수 있고, $v_{\perp}$은 다음 그림을 통해 구할 수 있다.
@@ -55,6 +61,7 @@ v 벡터가 k를 회전축으로 $\theta$만큼 회전했으니
 $v_{\parallel rot}=v_{\parallel}$ 이다.
 
 그리고 v의 크기도 안 바뀌었으니 
+
 $$
 \left | v_{\perp rot} \right |=\left | v_{\perp} \right |
 $$
@@ -82,6 +89,7 @@ $v_{\perp rot}=v_{\perp}cos\theta + (k\times v)sin\theta$
 $$
 \left | v_{\perp} \right |=\left | k\times v \right |=\left | v_{\perp rot} \right |
 $$
+
 이므로
 
 그림3의 원을 그릴 수 있다.
@@ -102,6 +110,7 @@ $k\times v_{\perp}=k\times(v-v_{\parallel})=k\times v-k\times v_{\parallel}=k\ti
 $$
 v_{rot}=v_{\parallel rot}+v_{\perp rot},
 $$
+
 $v_{rot}=v_{\parallel}+cos\theta v_{\perp}+ (k\times v)sin\theta$
 
 $=v_{\parallel}+cos\theta(v-v_{\parallel})+(k\times v)sin\theta$
@@ -141,6 +150,7 @@ v_{z}
 \end{bmatrix}
 $$
 $\mathbf{K}$를 "cross-product matrix"로 정의하면, 
+
 $$
 \mathbf{K}=\begin{bmatrix}
 0 & -k_{x} & k_{y}\\ 
@@ -152,6 +162,7 @@ $$
 $$
 \mathbf{K}v=k\times v
 $$
+
 로 나타낼 수 있다.
 
 또한, $\mathbf{K}(\mathbf{K}v)=\mathbf{K}^{2}v=k\times(k\times v)$ 이다.
@@ -161,9 +172,14 @@ $$
 $v_{rot}$을 matrix 형태로 나타내보자.
 
 우선, 위에서
+
+
 $$
 v_{\perp}=v-v_{\parallel}=v-(k \cdot v)k = -k \times(k \times v)
 $$
+
+
+
 이러한 식이 있었다.
 
 이 식과 $\mathbf{K}v=k\times v, \mathbf{K}(\mathbf{K}v)=\mathbf{K}^{2}v=k\times(k\times v)$ 를 이용해서 $v_{rot}$을 정리해보자. v와 $v_{\perp}$만 남기면 된다.
@@ -181,9 +197,13 @@ $v_{rot}=v-(1-cos\theta)v_{\perp}+(k\times v)sin\theta$
 $v_{rot}=v+(1-cos\theta)\mathbf{K}^{2}v+\mathbf{K}v(sin\theta)$
 
 v로 묶어서 표현해보면,
+
+
 $$
 v_{rot}=\mathbf{R}v, \mathbf{R}=\mathbf{I}+(sin\theta)\mathbf{K}+(1-cos\theta)\mathbf{K}^{2}
 $$
+
+
 으로 나타낼 수 있다.
 
 ## 참고

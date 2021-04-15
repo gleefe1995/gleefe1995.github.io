@@ -79,24 +79,38 @@ A supplemental video for this work is available at https://youtu.be/A7UfeUnG6c4
   
 
   이벤트 카메라는 각각의 픽셀이 연속적인 밝기 신호 $L(u,t)$ 의 변화에 반응한다. 여기서 $L \equiv log I$로, logarithmic 변화를 의미한다. 구체적으로, 이벤트 $e_{k}=(x_{k},y_{k},t_{k},p_{k})$ 는 픽셀이 last event와 비교해서 threshold $\pm C$ (with C >0 )만큼 밝기 변화가 생긴다면 픽셀 $u_{k}=(x_{k},y_{k})^{T}$과 시간 $t_{k}$에 일어난다.
+
+
 $$
 \Delta L(u_{k}, t_{k})\doteq L(u_{k},t_{k})-L(u_{k},t_{k}-\Delta t_{k})=p_{k}C \cdots(1)
 $$
+
+
 where $t_{k}$는 같은 픽셀에서 last event로 부터의 시간이고, event polarity $p_{k}$는 -1 또는 1 값으로, 밝기 변화의 sign을 나타낸다. 위의 식은 ideal sensor의 event 생성 equation이다. 여기서
 
 ### 4.1 Brightness-Increment Images from Events and Frames
 
   Event polarities의 Pixel-wise accumulation은 Time inverval $\Delta \tau $동안 밝기 변화를 측정하여  image $\Delta L(u)$를 만든다.
+
+
 $$
 \Delta L(u)=\Sigma_{t_{k}\Subset \Delta \tau}p_{k}C\delta(u-u_{k}),\cdots(2)
 $$
+
+
 where $\delta$는 Kronecker delta due to its discrete argument (pixels on a lattice) 이다.
 
   작은 $\Delta \tau$에 대해서, 밝기가 일정하다는 가정 하에
+
+
 $$
 \Delta L(u)\approx-\nabla L(u) \cdot v(u)\delta \tau,\cdots (3)
 $$
+
+
 로 쓸 수 있다. image-point velocity $v \equiv \dot u$이다. 식(2)는 event의 밝기 변화, 식(3)은 frame에서 밝기 변화를 나타낸 것이다. 식(3)의 식을 유도하기 위해서는 먼저 밝기가 일정하다는 가정에서부터 출발한다. 
+
+
 $$
 L(u(t),t)=const
 $$
@@ -109,10 +123,16 @@ $$
 =>\frac{\mathrm{d} L }{\mathrm{d} t}=\nabla_{u}L \cdot \dot{u}+\frac{\partial L}{\partial t}=0 \cdots(3.2)
 $$
 
+
+
 여기서, Taylor expansion을 이용해서 for small $\Delta \tau$에 대해 
+
+
 $$
 \Delta L(u,t) \doteq L(u,t)-L(u,t-\Delta \tau) \approx \frac{\partial L}{\partial t}(u,t)\Delta \tau \cdots (3.3)
 $$
+
+
 로 나타낼 수 있고, 식 (3.3)을 (3.2)에 대입하면 식 (3)을 얻을 수 있다. 여기서 u는 point $(x,y)$를 나타내므로 $\nabla L(u)=(\frac{\partial L}{\partial x},\frac{partial L}{\partial y})^{T}$로 나타낸다. 2차원 벡터이기 때문에 dot product로 연산한다. Dot product 특성을 생각해보자. 만약 motion이 edge에 평행하다면, motion은 $\nabla L$과 수직일 것이다($v \perp \nabla L$) .그럼  0이 되어 항이 사라질 것이고 이벤트가 일어나지 않을 것이다. 앞으로는 식(3)을 hat을 써서 $\Delta \hat{L}$로 나타내고 Fig.3(b)에서와 같이 predicted brightness increment라고 부르고, frame은 $\hat{L}$(given at t=0)로 나타낼 것이다.
 
 ![image](https://user-images.githubusercontent.com/67038853/112593859-731e7780-8e4b-11eb-977b-356812d0113b.png)
@@ -128,27 +148,47 @@ $$
 ![image](https://user-images.githubusercontent.com/67038853/112597714-d363e800-8e50-11eb-9e2e-c47962838653.png)
 
 ​    $\Delta L - \Delta \hat{L}$이 zero-mean additive Gaussian distribution을 따른다고 가정하면, 우리는 event의 집합
+
+
 $$
 \varepsilon \doteq \left \{ e_{k} \right \}^{N_{e}}_{k=1}
 $$
+
+
 의 likelihood function은
+
+
 $$
 p(\varepsilon \mid p,v,\hat{L})=\frac{1}{\sqrt{2 \pi \sigma^{2}}}exp(-\frac{1}{2\sigma^{2}}\int_{P}(\Delta L(u)-\Delta\hat{L}(u;p,v))^{2}du) \cdots(4)
 $$
-  이다.
+  
+
+이다.
 
   Maximizing this likelihood with respect to the motion parameters p and v ($\hat{L}$은 알려져 있기 때문에) yields the minimization of the $L^{2}$ norm of the photometric residual,
+
+
 $$
 \min_{p,v}\left \| \Delta L(u)-\Delta \hat{L}(u;p,v) \right \|^{2}_{L^{2}(P)}\cdots(5)
 $$
+
+
 where $\left \| f(u) \right \|^{2}_{L^{2}(P)} \doteq \int_{P}f^{2}(u)du$. 하지만, objective function (5)는 보통 사전에 알려지지 않는 contrast sensitivity C에 의존한다. 그래서 다음과 같은 unit-norm patches를 제안한다.
+
+
 
 ![image](https://user-images.githubusercontent.com/67038853/112780216-54a2c100-9083-11eb-81ae-70a7e22285a7.png)
 
+
+
 which cancels the terms in C and $\Delta \tau$, 그리고 feature velocity $v$의 방향에만 의존한다. 우리는 W를 단순화시키기 위해서 rigid-body motion이라고 생각한다.
+
+
 $$
 W(u;p)=R(p)u+t(p)\cdots (7)
 $$
+
+
 where $(R,t)\in SE(2)$. The objective function (6)는 Ceres software에서 제공하는 non-linear least squares framework로 최적화된다.
 
 ![image](https://user-images.githubusercontent.com/67038853/112780481-e5799c80-9083-11eb-9795-7980389b2aaf.png)

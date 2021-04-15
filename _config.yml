@@ -23,7 +23,7 @@ profile_links:
 #disqus_shortname: xxx   # get one: https://disqus.com/admin/signup/
 #duoshuo_shortname: xxx  # get one: http://duoshuo.com/create-site/
 
-# excerpt_separator: <!--more-->
+excerpt_separator: <!--more-->
 
 header:
   links:             # Links on the header. Link to in-site page with a slash as prefix
@@ -59,4 +59,4 @@ defaults:
 kramdown:
   input: GFM
   syntax_highlighter: rouge
-  math_engine: mathjax
+# math_engine: mathjax

@@ -147,9 +147,13 @@ void supp_nonMax(Mat sobel, Mat  direct, Mat& dst)		// 비최대값 억제
  sobel 행렬에서 기울기 방향으로 조사했을 때, center값이 그 두 값보다 크면 dst행렬에 저장한다.
 
 sobel 행렬은 
+
+
 $$
 sobel= \left | G_{x} \right |+\left | G_{y} \right | 
 $$
+
+
 즉 방향의 크기(변화량의 크기)이다. 
 
 기울기 방향에 따라 조사할 점이 다르다. 기울기 방향의 앞뒤 점을 조사해서 
