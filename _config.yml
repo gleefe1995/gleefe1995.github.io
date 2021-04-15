@@ -23,7 +23,7 @@ profile_links:
 #disqus_shortname: xxx   # get one: https://disqus.com/admin/signup/
 #duoshuo_shortname: xxx  # get one: http://duoshuo.com/create-site/
 
-excerpt_separator: <!--more-->
+# excerpt_separator: <!--more-->
 
 header:
   links:             # Links on the header. Link to in-site page with a slash as prefix
@@ -43,6 +43,9 @@ paginate_path: "page:num"
 
 highlighter: rouge
 markdown: kramdown
+lsi: false
+excerpt_separator: "\n\n"
+incremental: false
 
 # https://jekyllrb.com/docs/configuration/#precedence
 defaults:
@@ -55,5 +58,5 @@ defaults:
 
 kramdown:
   input: GFM
-  syntax_highlighter: rouge
-  math_engine: mathjax
+#  syntax_highlighter: rouge
+#  math_engine: mathjax
