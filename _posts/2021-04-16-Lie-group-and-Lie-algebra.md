@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Lie group and Lie algebra"
-date: 2021-04-16 17:05:30 -0400
+date: 2021-04-16 18:05:30 -0400
 categories: math
 use_math: true
 ---
