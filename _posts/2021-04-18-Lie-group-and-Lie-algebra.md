@@ -51,12 +51,17 @@ $$
 또, orthogonal matrix R에 대해서 $det(R^{T})=det(R)$이 성립하고, $RR^{T}=I$이므로 $det(R^{2})=1$이 되는데, 여기서 determinant가 1인 subgroup을 special orthogonal group, SO(3)라고 표기한다.
 
 한 줄로 표기하자면,
+
+
 $$
 SO(3)=\{R\in\real^{3x3}|RR^{T}=I,det(R)=1\}
 $$
 
 
+
 추가적으로, SE(3)는 rotation 행렬과 translation vector를 함께 나타낸 homogeneous transformation matrix의 그룹이다.
+
+
 $$
 SE(3)=\{A|A=\begin{bmatrix}
 R &T \\ 
@@ -65,9 +70,12 @@ R &T \\
 $$
 
 
+
 #### Lie algebra
 
 SO(3) group의 Lie algebra는 so(3)라고 표기하며 skew-symmetric 행렬이다. 
+
+
 $$
 so(3)=\{[\omega]=\begin{pmatrix}
 0&-\omega_{3}&\omega_{2}\\ 
@@ -79,9 +87,9 @@ so(3)=\{[\omega]=\begin{pmatrix}
 \omega_{z}
 \end{bmatrix}\in \real^{3},||\omega||=1\}
 $$
+
+
 어떤 3차원 벡터 $\omega$에 브라켓을 씌운 형태 [$\omega$]는 그 벡터와의 외적곱을 나타내는 행렬로 나타낼 수 있다.
-
-
 
 skew-symmetric 행렬은 $A^{T}=-A$를 만족한다.
 
@@ -122,8 +130,8 @@ $$
 
 
 그렇다면 rotation vector $\omega$의 skew-symmetric 형태인 $[\omega]=\begin{pmatrix}
-0&-\omega_{3}&\omega_{2}\\ 
-\omega_{3}&0&-\omega_{1} \\ 
+0&-\omega_{3}&\omega_{2}\\\\ 
+\omega_{3}&0&-\omega_{1} \\\\ 
 -\omega_{2}&\omega_{1}&0 
 \end{pmatrix}$ 는 어떻게 나왔을까?
 
@@ -138,13 +146,21 @@ $[\omega]$는 외적의 행렬 형태라고 했다. 이 어떤 벡터에 이 행
 ### Exponential coordinates
 
   $\dot{p}(t)=\vec{w}\times p(t)=[\omega]p$ 으로 표현이 가능하다. 여기서 1차 미분 방정식 $\dot{x}=Ax$를 풀면 $x=x(0)e^{At}$로 풀 수 있다는 것을 이용하면,
+
+
 $$
 p(t)=e^{[\omega] t}p(0)
 $$
+
+
  으로 나타낼 수 있고, $|\omega|=1$이면, 즉 각속도가 1rad/sec 이면, 시간 t만큼 회전한 각도 $\theta=t$가 되어 서로 interchangable하다. 
+
+
 $$
 p(\theta)=e^{[\omega] \theta}p(0)
 $$
+
+
 $e^{[\omega] \theta}$는 t=0 근처에서 $e^{[\omega] \theta}=I+[\omega]\theta+[\omega]^2\frac{\theta^2}{2!}+ \cdots$과 같이 나타낼 수 있는데, 여기서 $[\omega]^3=-[\omega]$를 이용해서 정리하면,
 
 $R=e^{[\omega] \theta}=I+sin\theta[\omega]+(1-cos\theta)[\omega]^2$과 같이 나타낼 수 있다. 이렇게 회전 행렬을 so(3) matrix인 $[\omega]$로 나타낼 수 있게 된다. 
@@ -177,8 +193,10 @@ $e^{[\omega] \theta}$을 풀어 써보면,
 
 
 
-참조 : http://stillbreeze.github.io/Optimization-On-a-Manifold/
 
-https://edward0im.github.io/mathematics/2020/05/01/lie-theory/
 
-https://www.youtube.com/watch?v=_uLRPqjdHjk&t=518s&ab_channel=SLAMKR
+참조 : <http://stillbreeze.github.io/Optimization-On-a-Manifold/>
+
+<https://edward0im.github.io/mathematics/2020/05/01/lie-theory/>
+
+<https://www.youtube.com/watch?v=_uLRPqjdHjk&t=518s&ab_channel=SLAMKR>
