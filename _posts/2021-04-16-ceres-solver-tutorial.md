@@ -1,4 +1,5 @@
 ---
+
 layout: post
 title: "ceres-solver tutorial"
 date: 2021-04-16 17:05:30 -0400
@@ -478,7 +479,7 @@ data format은 다음과 같다.
 
 
 
-observation 데이터, camera pose 데이터, 3D point 데이터
+observation 데이터개수, camera pose 데이터개수, 3D point 데이터개수
 
 num_observation + 9*num_cameras + 3\*num_points 하면 전체 데이터개수가 나온다.
 
@@ -640,6 +641,43 @@ struct SnavelyReprojectionError {
 ```
 
 위와같이 나타낼 수 있다. curve fitting example이랑 비슷한 부분이 많다.
+
+
+
+### pose graph 2d 
+
+실행방법 
+
+[여기](https://lucacarlone.mit.edu/datasets/)에서 2d pose graph optimization 데이터셋 하나를 받고 
+
+```
+cd ceres-bin/bin
+./pose_graph_2d --input /home/gleefe1995/Downloads/input_M3500_g2o.g2o
+```
+
+
+
+
+
+#### plot
+
+```
+python3 plot_results.py --optimized_poses ./poses_optimized.txt --initial_poses ./poses_original.txt 
+```
+
+matplotlib를 설치하라고 하면 
+
+```
+sudo pip3 install matplotlib
+```
+
+파이썬3로 실행했기 때문에 pip3로 설치했다.
+
+
+
+![image](https://user-images.githubusercontent.com/67038853/115231814-f8e2c980-a150-11eb-9919-28c2e00da261.png)
+
+
 
 #### 참조
 
