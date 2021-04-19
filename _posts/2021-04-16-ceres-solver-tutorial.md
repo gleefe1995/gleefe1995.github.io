@@ -461,18 +461,18 @@ data format은 다음과 같다.
 
 ---
 
-<num_cameras> <num_points> <num_observations>
-<camera_index_1> <point_index_1> <x_1> <y_1>
+\<num_cameras\>  \<num_points\> \<num_observations\>
+\<camera_index_1\> \<point_index_1\> \<x_1\> \<y_1\>
 ...
-<camera_index_num_observations> <point_index_num_observations> <x_num_observations> <y_num_observations>
+\<camera_index_num_observations> \<point_index_num_observations> \<x_num_observations> \<y_num_observations>
 
-<camera_1>
+\<camera_1>
 ...
-<camera_num_cameras>
+\<camera_num_cameras>
 
-<point_1>
+\<point_1>
 ...
-<point_num_points>
+\<point_num_points>
 
 ---
 
