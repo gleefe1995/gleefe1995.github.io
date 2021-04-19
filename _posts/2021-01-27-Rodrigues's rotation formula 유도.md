@@ -128,6 +128,8 @@ matrix notation을 알아보자.
 먼저, $k\times v$를 column matrices로 나타내보자.
 
 외적을 하면 쉽게 나타낼 수 있다.
+
+
 $$
 \begin{bmatrix}
 (k\times v)_{x}\\ 
@@ -149,7 +151,10 @@ v_{y}\\
 v_{z}
 \end{bmatrix}
 $$
+
+
 $\mathbf{K}$를 "cross-product matrix"로 정의하면, 
+
 
 $$
 \mathbf{K}=\begin{bmatrix}
@@ -158,10 +163,16 @@ k_{z} & 0 & -k_{x}\\
 -k_{y} & k_{x} & 0
 \end{bmatrix},
 $$
+
+
 으로 나타낼 수 있고, 
+
+
 $$
 \mathbf{K}v=k\times v
 $$
+
+
 
 로 나타낼 수 있다.
 
