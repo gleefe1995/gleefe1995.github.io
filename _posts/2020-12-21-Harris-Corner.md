@@ -2,7 +2,7 @@
 layout: post
 title: "Harris Corner 코드 분석"
 date: 2020-12-27 14:42:30 -0400
-categories: Harris Corner
+categories: opencv
 use_math: true
 ---
 

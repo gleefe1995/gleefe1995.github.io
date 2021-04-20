@@ -2,7 +2,7 @@
 layout: post
 title: "Canny edge 검출"
 date: 2021-02-02 21:08:30 -0400
-categories: Cannyedge
+categories: opencv
 use_math: true
 ---
 

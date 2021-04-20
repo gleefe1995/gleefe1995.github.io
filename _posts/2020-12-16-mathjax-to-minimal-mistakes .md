@@ -2,7 +2,7 @@
 layout: post
 title: "Apply mathjax to Minimal Mistakes theme "
 date: 2020-12-16 23:53:30 -0400
-categories: mathjax, minimal mistakes
+categories: tips
 use_math: true
 ---
 

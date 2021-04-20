@@ -2,7 +2,7 @@
 layout: post
 title: "Hough Transform 코드 분석"
 date: 2020-12-10 14:42:30 -0400
-categories: hough transform
+categories: opencv
 use_math: true
 ---
 
