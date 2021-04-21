@@ -11,7 +11,7 @@ ceres-solver tutorial 문서를 공부한 글입니다.
 
 
 
-#### dependency
+### dependency
 
 ```
 # CMake
@@ -28,7 +28,7 @@ sudo apt-get install libsuitesparse-dev
 
 
 
-#### ceres-solver installation
+### ceres-solver installation
 
 ```
 cd catkin_ws/src
@@ -43,7 +43,7 @@ make install
 
 
 
-#### Introduction
+### Introduction
 
 
 $$
@@ -73,7 +73,7 @@ $$
 
 
 
-#### Hello world!
+### Hello world!
 
 ```
 cd ceres-bin/bin
@@ -152,7 +152,7 @@ iteration 2번만에 x값이 10이 나오는 것을 볼 수 있다.
 
 
 
-#### Powell's Function
+###` Powell's Function
 
 ```
 cd ceres-bin/bin
