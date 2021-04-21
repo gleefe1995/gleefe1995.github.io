@@ -2,7 +2,7 @@
 layout: post
 title: "Asynchoronous, Photometric Feature Tracking using Events and Frames"
 date: 2021-03-25 17:05:30 -0400
-categories: EventCamera
+categories: research
 use_math: true
 ---
 
@@ -161,7 +161,7 @@ $$
 $$
 p(\varepsilon \mid p,v,\hat{L})=\frac{1}{\sqrt{2 \pi \sigma^{2}}}exp(-\frac{1}{2\sigma^{2}}\int_{P}(\Delta L(u)-\Delta\hat{L}(u;p,v))^{2}du) \cdots(4)
 $$
-  
+
 
 이다.
 

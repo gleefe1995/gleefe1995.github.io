@@ -2,7 +2,7 @@
 layout: post
 title: "orb slam2 build in ubuntu 18.04"
 date: 2021-04-06 17:05:30 -0400
-categories: orbslam2
+categories: slam
 use_math: true
 ---
 

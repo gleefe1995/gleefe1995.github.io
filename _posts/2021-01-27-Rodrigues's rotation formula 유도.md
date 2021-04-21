@@ -2,7 +2,7 @@
 layout: post
 title: "Rodrigues' rotation formula 유도"
 date: 2021-01-09 21:08:30 -0400
-categories: Rodrigues
+categories: Math
 use_math: true
 comments: true
 ---
