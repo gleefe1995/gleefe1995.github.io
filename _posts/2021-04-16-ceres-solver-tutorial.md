@@ -152,7 +152,7 @@ iteration 2번만에 x값이 10이 나오는 것을 볼 수 있다.
 
 
 
-###` Powell's Function
+### Powell's Function
 
 ```
 cd ceres-bin/bin
@@ -287,7 +287,7 @@ Final x1 = 0.000292189, x2 = -2.92189e-05, x3 = 4.79511e-05, x4 = 4.79511e-05
 
 
 
-#### Curve Fitting
+### Curve Fitting
 
 위에서는 간단한 optimization을 해보았다면, 이제 실제 데이터를 가지고 curve를 fitting하는 예제를 풀어보자.
 $$
@@ -375,7 +375,7 @@ Final   m: 0.291861 c: 0.131439
 
 ![image](https://user-images.githubusercontent.com/67038853/114971234-e5b4cd00-9eb6-11eb-8bbe-ca50fe01e0c7.png)
 
-#### Simple bundle adjuster
+### Simple bundle adjuster
 
 BA는 reprojection error를 최소화 시키기 위해 3D point position과 카메라 parameter들을 adjustment하는 것이다.
 
@@ -644,7 +644,7 @@ struct SnavelyReprojectionError {
 
 
 
-### pose graph 2d 
+### pose graph 2d
 
 실행방법 
 
