@@ -290,9 +290,13 @@ Final x1 = 0.000292189, x2 = -2.92189e-05, x3 = 4.79511e-05, x4 = 4.79511e-05
 ### Curve Fitting
 
 위에서는 간단한 optimization을 해보았다면, 이제 실제 데이터를 가지고 curve를 fitting하는 예제를 풀어보자.
+
+
 $$
 y=e^{0.3x+0.1}, \sigma=0.2
 $$
+
+
 $\sigma$는 Gaussian noise
 
 
@@ -315,7 +319,23 @@ const double data[] = {
   6.750000e-01, 1.463566e+00,
 ```
 
-넣어줄 데이터의 x,y 값이 쭈르륵 있고
+넣어줄 데이터의 x,y 값이 쭈르륵 있다. x는 0.075씩 증가하고, y값은
+
+```c++
+// Data generated using the following octave code.
+//   randn('seed', 23497);
+//   m = 0.3;
+//   c = 0.1;
+//   x=[0:0.075:5];
+//   y = exp(m * x + c);
+//   noise = randn(size(x)) * 0.2;
+//   y_observed = y + noise;
+//   data = [x', y_observed'];
+```
+
+다음 식으로 랜덤값을 가지도록 설정한다.
+
+
 
 ```c++
 struct ExponentialResidual {
@@ -336,6 +356,10 @@ struct ExponentialResidual {
 ```
 
 ExponentialResidual을 위와 같이 정의한다.
+
+실제관측된 y_ 값에서 가정한 모델 $e^{m[0]x_+c[0]}$을 빼서 이 값들의 합이 최소가 되는
+
+m,c를 찾는 것이 목표이다. 
 
 ```c++
 double m = 0.0;
@@ -463,6 +487,7 @@ data format은 다음과 같다.
 ---
 
 \<num_cameras\>  \<num_points\> \<num_observations\>
+
 \<camera_index_1\> \<point_index_1\> \<x_1\> \<y_1\>
 ...
 \<camera_index_num_observations> \<point_index_num_observations> \<x_num_observations> \<y_num_observations>
