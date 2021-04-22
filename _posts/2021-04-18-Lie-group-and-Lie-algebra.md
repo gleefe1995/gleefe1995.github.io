@@ -54,7 +54,7 @@ $$
 
 
 $$
-SO(3)=\{R\in\real^{3x3}|RR^{T}=I,det(R)=1\}
+SO(3)=\{R\in \mathbb{R}^{3x3}|RR^{T}=I,det(R)=1\}
 $$
 
 
@@ -66,7 +66,7 @@ $$
 SE(3)=\{A|A=\begin{bmatrix}
 R &T \\ 
 0 & 1
-\end{bmatrix},R\in\real^{3x3}|RR^{T}=I,det(R)=1\}
+\end{bmatrix},R\in\mathbb{R}^{3x3}|RR^{T}=I,det(R)=1\}
 $$
 
 
@@ -81,11 +81,11 @@ so(3)=\{[\omega]=\begin{pmatrix}
 0&-\omega_{3}&\omega_{2}\\ 
 \omega_{3}&0&-\omega_{1} \\ 
 -\omega_{2}&\omega_{1}&0 
-\end{pmatrix}\in \real^{3x3}| \omega=\begin{bmatrix}
+\end{pmatrix}\in \mathbb{R}^{3x3}| \omega=\begin{bmatrix}
 \omega_{x}\\
 \omega_{y}\\
 \omega_{z}
-\end{bmatrix}\in \real^{3},||\omega||=1\}
+\end{bmatrix}\in \mathbb{R}^{3},||\omega||=1\}
 $$
 
 
