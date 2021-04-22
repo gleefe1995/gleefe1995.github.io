@@ -145,15 +145,7 @@ $[\omega]$는 외적의 행렬 형태라고 했다. 이 어떤 벡터에 이 행
 
 ### Exponential coordinates
 
-  $\dot{p}(t)=\vec{w}\times p(t)=[\omega]p$ 으로 표현이 가능하다. 여기서 1차 미분 방정식 $\dot{x}=Ax$를 풀면 $x=x(0)e^{At}$로 풀 수 있다는 것을 이용하면, $p(t)=e^{[\omega] t}p(0)$  으로 나타낼 수 있고, $|\omega|=1$이면, 즉 각속도가 1rad/sec 이면, 시간 t만큼 회전한 각도 $\theta=t$가 되어 서로 interchangable하다. 
-
-
-
-$$
-p(\theta)=e^{[\omega] \theta}p(0)
-$$
-
-
+  $\dot{p}(t)=\vec{w}\times p(t)=[\omega]p$ 으로 표현이 가능하다. 여기서 1차 미분 방정식 $\dot{x}=Ax$를 풀면 $x=x(0)e^{At}$로 풀 수 있다는 것을 이용하면, $p(t)=e^{[\omega] t}p(0)$  으로 나타낼 수 있고, $|\omega|=1$이면, 즉 각속도가 1rad/sec 이면, 시간 t만큼 회전한 각도 $\theta=t$가 되어 서로 interchangable하다. 따라서, $p(\theta)=e^{[\omega] \theta}p(0)$와 같이 쓸 수 있다.
 
 $e^{[\omega] \theta}$는 t=0 근처에서 $e^{[\omega] \theta}=I+[\omega]\theta+[\omega]^2\frac{\theta^2}{2!}+ \cdots$과 같이 나타낼 수 있는데, 여기서 $[\omega]^3=-[\omega]$를 이용해서 정리하면,
 
