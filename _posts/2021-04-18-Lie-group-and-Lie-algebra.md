@@ -163,7 +163,7 @@ $R=e^{[\omega] \theta}=I+sin\theta[\omega]+(1-cos\theta)[\omega]^2$과 같이 �
 
 
 
-이 식은 rodrigues' rotation formula와 같은 것을 알 수 있다. rodrigues' rotation formula를 유도할 때는 회전축의 unit vector k와 각도 $\theta$를 이용해서 회전행렬을 나타냈는데, 여기선 각속도 벡터 $\omega$를 이용하여 나타낸다. 언뜻 보면 자연스럽게 각속도를 가진 벡터 $\omega$를 $\theta$와 바꿔쓴 것 같은데, 각속도 벡터의 크기가 1이므로 $\theta$를 움직였다 = $\theta$초 만큼 각속도 1rad/sec로 움직였다라는 의미가 되어 서로 interchangable하게 바꿔 쓸 수 있기 때문에 가능한 점인 것 같다.
+이 식은 rodrigues' rotation formula와 같은 것을 알 수 있다. rodrigues' rotation formula를 유도할 때는 회전축의 unit vector k와 각도 $\theta$를 이용해서 회전행렬을 나타냈는데, 여기선 각속도 벡터 $\omega$를 이용하여 나타낸다. 이 부분에서 약간 헷갈렸는데, 각속도 벡터의 크기가 1이므로 $\theta$를 움직였다 = $\theta$초 만큼 각속도 1rad/sec로 움직였다라는 의미가 되어 $[w]t=[w]\theta$로 쓸 수 있어  interchangable하게 바꿔 쓸 수 있기 때문에 가능한 점인 것 같다.
 
 
 
