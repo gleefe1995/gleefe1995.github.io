@@ -55,7 +55,7 @@ Ceres는 $x_{j}$가 어떤 범위 안에 있을 때 non-linear least square 문�
 
 
 $$
-\rho(||f_{i}(x_{i_{1}},\cdots,x_{i_{k}})||^{2}
+\rho(||f_{i}(x_{i_{1}},\cdots,x_{i_{k}})||^{2})
 $$
 
 
