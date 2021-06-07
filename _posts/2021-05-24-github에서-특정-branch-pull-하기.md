@@ -33,6 +33,7 @@ git checkout branchname
 ### 원격에서 branch pull 해오기
 
 ```
+sudo git pull
 git checkout -t origin/branchname
 ```
 
