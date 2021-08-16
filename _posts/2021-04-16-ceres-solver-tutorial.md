@@ -489,8 +489,12 @@ data format은 다음과 같다.
 \<num_cameras\>  \<num_points\> \<num_observations\>
 
 \<camera_index_1\> \<point_index_1\> \<x_1\> \<y_1\>
+
 ...
-\<camera_index_num_observations> \<point_index_num_observations> \<x_num_observations> \<y_num_observations>
+
+\<camera_index_num_observations> \<point_index_num_observations> \<x_num_observations> 
+
+\<y_num_observations>
 
 \<camera_1>
 ...
@@ -501,6 +505,12 @@ data format은 다음과 같다.
 \<point_num_points>
 
 ---
+
+![image](https://user-images.githubusercontent.com/67038853/115571906-654cfc80-a2fa-11eb-8c02-27f6afad5da0.png)
+
+
+
+![image](https://user-images.githubusercontent.com/67038853/115571825-5403f000-a2fa-11eb-8625-b2b03b9613c0.png)
 
 
 
@@ -645,7 +655,11 @@ struct SnavelyReprojectionError {
 };
 ```
 
-위를 참고하여 BA problem을 만들면,
+predicted_x,y : 3D point in world coordinate -> 2D point in camera coordinates (투영된 점)
+
+observed_x,y : 실제 관측된 점
+
+이 두 개의 점의 x,y좌표의 차이를 뺀 것을 residual[0], [1]에 저장한다.
 
 ```c++
  // Create residuals for each observation in the bundle adjustment problem. The
