@@ -54,7 +54,7 @@ $$
 
 
 $$
-SO(3)=\{R\in\real^{3x3}|RR^{T}=I,det(R)=1\}
+SO(3)=\{R\in \mathbb{R}^{3x3}|RR^{T}=I,det(R)=1\}
 $$
 
 
@@ -66,7 +66,7 @@ $$
 SE(3)=\{A|A=\begin{bmatrix}
 R &T \\ 
 0 & 1
-\end{bmatrix},R\in\real^{3x3}|RR^{T}=I,det(R)=1\}
+\end{bmatrix},R\in\mathbb{R}^{3x3}|RR^{T}=I,det(R)=1\}
 $$
 
 
@@ -81,11 +81,11 @@ so(3)=\{[\omega]=\begin{pmatrix}
 0&-\omega_{3}&\omega_{2}\\ 
 \omega_{3}&0&-\omega_{1} \\ 
 -\omega_{2}&\omega_{1}&0 
-\end{pmatrix}\in \real^{3x3}| \omega=\begin{bmatrix}
+\end{pmatrix}\in \mathbb{R}^{3x3}| \omega=\begin{bmatrix}
 \omega_{x}\\
 \omega_{y}\\
 \omega_{z}
-\end{bmatrix}\in \real^{3},||\omega||=1\}
+\end{bmatrix}\in \mathbb{R}^{3},||\omega||=1\}
 $$
 
 
@@ -145,20 +145,18 @@ $[\omega]$는 외적의 행렬 형태라고 했다. 이 어떤 벡터에 이 행
 
 ### Exponential coordinates
 
-  $\dot{p}(t)=\vec{w}\times p(t)=[\omega]p$ 으로 표현이 가능하다. 여기서 1차 미분 방정식 $\dot{x}=Ax$를 풀면 $x=x(0)e^{At}$로 풀 수 있다는 것을 이용하면,
+$\dot{p}(t)=\vec{w}\times p(t)=[\omega]p$ 으로 표현이 가능하다. 여기서 1차 미분 방정식
+
+$\dot{x}=Ax$를 풀면 $x=x(0)e^{At}$로 풀 수 있다는 것을 이용하면, $p(t)=e^{[\omega] t}p(0)$  으로
+
+ 
+
+나타낼 수 있고, $|\omega|=1$이면, 즉 각속도가 1rad/sec 이면, 시간 t만큼 회전한 각도 $\theta=t$가 
 
 
-$$
-p(t)=e^{[\omega] t}p(0)
-$$
 
+되어 서로 interchangable하다. 따라서, $p(\theta)=e^{[\omega] \theta}p(0)$와 같이 쓸 수 있다.
 
- 으로 나타낼 수 있고, $|\omega|=1$이면, 즉 각속도가 1rad/sec 이면, 시간 t만큼 회전한 각도 $\theta=t$가 되어 서로 interchangable하다. 
-
-
-$$
-p(\theta)=e^{[\omega] \theta}p(0)
-$$
 
 
 $e^{[\omega] \theta}$는 t=0 근처에서 $e^{[\omega] \theta}=I+[\omega]\theta+[\omega]^2\frac{\theta^2}{2!}+ \cdots$과 같이 나타낼 수 있는데, 여기서 $[\omega]^3=-[\omega]$를 이용해서 정리하면,
@@ -169,7 +167,7 @@ $R=e^{[\omega] \theta}=I+sin\theta[\omega]+(1-cos\theta)[\omega]^2$과 같이 �
 
 
 
-이 식은 rodrigues' rotation formula와 같은 것을 알 수 있다. rodrigues' rotation formula를 유도할 때는 회전축의 unit vector k와 각도 $\theta$를 이용해서 회전행렬을 나타냈는데, 여기선 각속도 벡터 $\omega$를 이용하여 나타낸다. 언뜻 보면 자연스럽게 각속도를 가진 벡터 $\omega$를 $\theta$와 바꿔쓴 것 같은데, 각속도 벡터의 크기가 1이므로 $\theta$를 움직였다 = $\theta$초 만큼 각속도 1rad/sec로 움직였다라는 의미가 되어 서로 interchangable하게 바꿔 쓸 수 있기 때문에 가능한 점인 것 같다.
+이 식은 rodrigues' rotation formula와 같은 것을 알 수 있다. rodrigues' rotation formula를 유도할 때는 회전축의 unit vector k와 각도 $\theta$를 이용해서 회전행렬을 나타냈는데, 여기선 각속도 벡터 $\omega$를 이용하여 나타낸다. 이 부분에서 약간 헷갈렸는데, 각속도 벡터의 크기가 1이므로 $\theta$를 움직였다 = $\theta$초 만큼 각속도 1rad/sec로 움직였다라는 의미가 되어 $[w]t=[w]\theta$로 쓸 수 있어  interchangable하게 바꿔 쓸 수 있기 때문에 가능한 점인 것 같다.
 
 
 

@@ -17,3 +17,4 @@ sudo chown -R username:usergroup *
 ```
 
 그럼 권한이 다 유저로 바뀌어 수정하고 저장할 수 있게 된다.
+
