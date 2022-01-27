@@ -9,7 +9,7 @@ description: >
 # Your information
 email: gleefe1995@naver.com
 author: babo.bum
-avatar: "/assets/1617621012045.jpg"
+avatar: "/assets/momo.jpeg"
 profile: cvlab
 #twitter_username: twitter_username
 #github_username:  github_username
@@ -59,4 +59,5 @@ defaults:
 kramdown:
   input: GFM
   syntax_highlighter: rouge
+
 # math_engine: mathjax
