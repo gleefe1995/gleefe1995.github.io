@@ -50,6 +50,8 @@ GCNv2 SLAM에 map을 .bin 파일로 저장 후, map을 한번 만든 이후에�
 
 #### 결과물
 
-![ar_occlusion](assets/ar_occlusion.gif)
+![ar_occlusion](../assets/ar_occlusion.gif)
 
 cube의 각 vertex를 depth map과 비교한 뒤에 occlusion 처리를 해주었다. 물론 보기에 정확해보이진 않았는데, 다른 더 복잡한 객체를 증강시켰을 때는 어떤 모습을 보일지 확인해보고 싶었는데 이번 프로젝트에서 그러한 점을 확인해보지 못한 것이 아쉬웠다.
+
+github : https://github.com/gleefe1995/GCNv2
