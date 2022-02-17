@@ -26,7 +26,7 @@ mono camera로 localization하는 부분을 더 robust한 learning based feature
 
 ![image](https://user-images.githubusercontent.com/67038853/154089955-78b94f33-059f-4d3d-bcc1-1a7f7d4b8f42.png)
 
-https://taeyoung96.github.io/slamtip/ORBSLAM2withPCL/ 를 참고하여 depthmap도 제공하는 tum dataset으로 orb slam을 이용해서 dense point cloud map을 얻었다. 
+<https://taeyoung96.github.io/slamtip/ORBSLAM2withPCL/> 를 참고하여 depthmap도 제공하는 tum dataset으로 orb slam을 이용해서 dense point cloud map을 얻었다. 
 
 ![image](https://user-images.githubusercontent.com/67038853/154090395-4c4c3443-3afd-43f7-a197-b44916c547cd.png)
 
@@ -36,9 +36,9 @@ https://taeyoung96.github.io/slamtip/ORBSLAM2withPCL/ 를 참고하여 depthmap�
 
 ![image](https://user-images.githubusercontent.com/67038853/154090808-dc731b4b-a236-4f1e-9c86-92997ade91c5.png)
 
-GCNv2 SLAM : https://github.com/jiexiong2016/GCNv2_SLAM
+GCNv2 SLAM : <https://github.com/jiexiong2016/GCNv2_SLAM>
 
-map binary로 저장 기능 : https://github.com/Alkaid-Benetnash/ORB_SLAM2
+map binary로 저장 기능 : <https://github.com/Alkaid-Benetnash/ORB_SLAM2>
 
 GCNv2 SLAM에 map을 .bin 파일로 저장 후, map을 한번 만든 이후에는 map을 load하여 localization 기능만 수행하도록 하였다. 저장된 keyframe 위치와 비교해본 결과 거의 비슷한 경로를 그리면서 위치를 추정하였다. 
 
@@ -54,4 +54,4 @@ GCNv2 SLAM에 map을 .bin 파일로 저장 후, map을 한번 만든 이후에�
 
 cube의 각 vertex를 depth map과 비교한 뒤에 occlusion 처리를 해주었다. 물론 보기에 정확해보이진 않았는데, 다른 더 복잡한 객체를 증강시켰을 때는 어떤 모습을 보일지 확인해보고 싶었는데 이번 프로젝트에서 그러한 점을 확인해보지 못한 것이 아쉬웠다.
 
-github : https://github.com/gleefe1995/GCNv2
+github : <https://github.com/gleefe1995/GCNv2>
