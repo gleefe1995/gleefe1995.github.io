@@ -2,7 +2,7 @@
 layout: post
 title: "github permission error"
 date: 2021-04-19 18:05:30 -0400
-categories: tips
+categories: error
 use_math: true
 ---
 
