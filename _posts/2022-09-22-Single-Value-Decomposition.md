@@ -22,11 +22,7 @@ use_math: true
 
 ""어떤 벡터 x에 선형 변환 A를 곱하였을 때, 원래 벡터에 크기만 곱한 벡터가 되는 벡터 x와 그 크기는 얼마인가?"
 
-이러한 벡터들을 여러 개 구했다면,
-$$
-Av_{i}=\lambda_{i}v_{i} \ for \ i=1,2,\cdots,n
-$$
-다음과 같이 식을 표현할 수 있고, 이러한 고유벡터들을 열벡터로 가지는 행렬을 V, scale factor들로 이루어진 diagonal matrix를 $\lambda$라고 정의해보자.
+이러한 벡터들을 여러 개 구했다면, $Av_{i}=\lambda_{i}v_{i} \ for \ i=1,2,\cdots,n$ 과 같이 식을 표현할 수 있고, 이러한 고유벡터들을 열벡터로 가지는 행렬을 V, scale factor들로 이루어진 diagonal matrix를 $\lambda$라고 정의해보자.
 
 식으로 나타내면 $AV=V\lambda$로 쓸 수 있고, $A=V\lambda V^{-1}$로 A를 decomposition 할 수 있다.
 
@@ -42,10 +38,8 @@ SVD는 다음과 같은 의미를 가진다.
 
 "직교하는 벡터 집합에 대하여, 선형 변환 후에 그 크기는 변하지만, 여전히 직교하는 직교 집합은 무엇인가?"
 
-SVD란, $m\times n$ 차원의 행렬 A에 대하여 
-$$
-A = U\Sigma V^{T}
-$$
+SVD란, $m\times n$ 차원의 행렬 A에 대하여 $A = U\Sigma V^{T}$
+
 와 같이 행렬을 분해하는 것을 의미한다. 이 때 U, V는 각각 $m\times m$, $n\times n$ 차원의 orthogonal matrix, $\Sigma$는 $m\times n$차원의 diagonal matrix이다.
 
 #### UV 계산법
@@ -75,4 +69,4 @@ $AX=B$의 선형 연립방정식이 있을 때, A의 역행렬이 존재한다�
 
 ![image](https://user-images.githubusercontent.com/67038853/191526187-21626a95-c555-4a86-8d05-acaea2a30768.png)
 
-calibration에서 최종적으로 $Mp\doteq 0$이라는 선형 연립방정식을 풀어서 p matrix를 구해야하는데, 이 때 0에 가장 가깝도록 하는 p 벡터는 M 행렬의 right singular vector $p=v_{12}$이다. 왜냐면 Singular value는 diagonal에서 내려갈수록 0에 가까워지는데, 이 0에 가장 가까운 Singular value와 곱해지는 것이 right singular vector이기 때문이다.
+calibration에서 최종적으로 $Mp\doteq 0$이라는 선형 연립방정식을 풀어서 p matrix를 구해야하는데, 이 문제는 M matrix의 null space를 구하는 것과 같다. 우변이 0이 아닐 경우에는, 이 때 0에 가장 가깝도록 하는 p 벡터는 M 행렬의 right singular vector $p=v_{12}$이다. 왜냐면 Singular value는 diagonal에서 내려갈수록 0에 가까워지는데, 이 0에 가장 가까운 Singular value와 곱해지는 것이 right singular vector이기 때문이다.
