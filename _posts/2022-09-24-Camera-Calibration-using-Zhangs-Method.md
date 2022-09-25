@@ -2,7 +2,7 @@
 layout: post
 title: "Camera Calibration using Zhang's Method"
 date: 2022-09-24 00:01:30 -0400
-categories:SLAM
+categories: SLAM
 use_math: true
 ---
 
