@@ -113,7 +113,7 @@ use_math: true
 
 ##### 수식블록 사용
 
-Ctrl+Shift+M을 누르거나 $$+Enter를 치면 수식 블록이 생긴다.
+Ctrl+Shift+M을 누르거나 `$$`+Enter를 치면 수식 블록이 생긴다.
 
 ```latex
 $$
@@ -128,6 +128,5 @@ $$
 
 
 수식은 <https://www.codecogs.com/latex/eqneditor.php> 여기에서 쓰고 복붙하면 편하다.
-
 
 

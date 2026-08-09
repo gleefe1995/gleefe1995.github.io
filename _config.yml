@@ -55,6 +55,7 @@ defaults:
       type: "posts"
     values:
       layout: "post"
+      use_math: true
 
 kramdown:
   input: GFM

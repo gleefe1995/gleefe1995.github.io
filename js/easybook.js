@@ -230,11 +230,11 @@ function RealLoad() {
         }
     }
 
-    if (document.querySelector('script[type*="math/tex"]')) {
+    if (document.querySelector('script[type*="math/tex"]') && !window.MathJax) {
         var sc = document.createElement('script');
         sc.setAttribute('type', 'text/javascript');
-        sc.setAttribute('async', 'true');
-        sc.setAttribute('src', 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML');
+        sc.setAttribute('defer', 'true');
+        sc.setAttribute('src', 'https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js');
         document.body.appendChild(sc);
     }
 }
