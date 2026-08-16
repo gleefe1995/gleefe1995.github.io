@@ -21,7 +21,7 @@ permalink: /category/
           {% for post in category_posts %}
             {% if post.title != null %}
               <li>
-                <span>{{ post.date | date: "%b %d" }}</span> »
+                <span class="post-date">{{ post.date | date: "%Y %b %d" }}</span> »
                 <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
               </li>
             {% endif %}

@@ -87,7 +87,7 @@
         display: flex;
         align-items: center;
         gap: 12px;
-        padding: 16px 4px;
+        padding: 20px 4px;
         cursor: pointer;
         list-style: none;
 
@@ -114,16 +114,27 @@
     }
 
     .category-name {
-        font-size: 24px;
+        font-size: 30px;
+        line-height: 1.2;
     }
 
     .category-count {
         color: #777;
-        font-size: $small-font-size;
+        font-size: $base-font-size;
     }
 
     .category-posts {
         margin: 0 0 18px 42px;
+
+        li {
+            line-height: 1.8;
+        }
+
+        .post-date {
+            display: inline-block;
+            min-width: 96px;
+            color: #666;
+        }
     }
 
     @include media-query($on-palm) {
@@ -131,6 +142,10 @@
 
         .category-posts {
             margin-left: 20px;
+        }
+
+        .category-name {
+            font-size: 26px;
         }
     }
 }
