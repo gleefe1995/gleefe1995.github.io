@@ -10,9 +10,9 @@ use_math: true
 
 ![image](https://user-images.githubusercontent.com/67038853/192197342-3b00de04-baa7-4da3-9f30-fa616c9f94b8.png)
 
-$X'$은 오른쪽 카메라 좌표계에서 바라본 $X'$의 좌표이고, $R,t$는 왼쪽 카메라 좌표계->오른쪽 카메라 좌표계로 변환하는 rotation 행렬, translation 벡터이다.
+$X'$은 오른쪽 카메라 좌표계에서 바라본 $X'$의 좌표이고, $R, t$는 왼쪽 카메라 좌표계에서 오른쪽 카메라 좌표계로 변환하는 rotation 행렬, translation 벡터이다.
 
-$\overline{o'X'}, \overline{o'o}$ 는 각각 오른쪽 카메라 좌표계에서 바라본 $X', o$ 벡터이다. 이 두 벡터를 외적하면 $X'\times t = [t]^{T}_{X}X'$으로 표현할 수 있다.
+$\overline{o'X'}$, $\overline{o'o}$는 각각 오른쪽 카메라 좌표계에서 바라본 $X'$, $o$ 벡터이다. 이 두 벡터를 외적하면 $X' \times t = [t]^{T}_{X}X'$으로 표현할 수 있다.
 
 ![image](https://user-images.githubusercontent.com/67038853/192197873-50beadef-da28-47dd-91bd-9e4e73ef2b25.png)
 
@@ -22,7 +22,11 @@ $(\overline{o'X'}\times \overline{o'o})\cdot \overline{oX}=0$이므로 $[t]_{X}R
 
 Fundamental matrix는 카메라 파라미터까지 포함한 두 이미지의 실제 픽셀 좌표 사이의 기하학적 관계를 표현하는 행렬이다.
 
-$x'_{img}^{T}Fp_{img}=0$ => $E=K^{T}FK$(동일한 카메라일 경우)로 표현할 수 있다.
+$$
+x_{img}'^{T} F p_{img} = 0
+$$
+
+따라서 동일한 카메라일 경우 $E = K^{T} F K$로 표현할 수 있다.
 
 ![image](https://user-images.githubusercontent.com/67038853/192199359-17f50091-f73a-41d9-ae13-42f97be51c85.png)
 
@@ -38,17 +42,29 @@ N개의 point에 대해서 A를 a 행렬에 관해 나타낼 수 있고, $Af=0$�
 
 #### Enforcing Rank 2
 
-F matrix는 singular 해야하고, rank 2를 가진다. F는 E로부터 구하는데, E는 
+F matrix는 singular 해야 하고, rank 2를 가진다. F는 E로부터 구하는데, E는
 
 ![image](https://user-images.githubusercontent.com/67038853/192209453-3b6436e5-cdd4-4d91-9d8b-b56be1d07a63.png)
 
-다음의 translation vector로 skew-matrix를 구성한 matrix로 구한다. $T_{x}$ matrix는 한 컬럼이 다른 두 컬럼의 linear combination으로 표현 가능하기 때문에 rank가 2인데, 이로부터 F를 구하므로 F도 rank가 2인 것이다. 만약 F matrix가 일반적으로는 rank 2를 가지지 않는데, 이를 위해서 rank-2 constraint를 주어 rank=2가 되도록 해야 한다. $||F-F'||, det\ F'=0$인 $F'$으로 교체하는 것이다. 
+다음의 translation vector로 skew-matrix를 구성한 matrix로 구한다. $T_{x}$ matrix는 한 컬럼이 다른 두 컬럼의 linear combination으로 표현 가능하기 때문에 rank가 2인데, 이로부터 F를 구하므로 F도 rank가 2인 것이다. 계산된 F matrix가 rank 2를 가지지 않는 경우에는 rank-2 constraint를 주어 rank가 2가 되도록 해야 한다. 즉, 다음 조건을 만족하는 $F'$으로 교체한다.
+
+$$
+\min_{F'} \lVert F - F' \rVert
+\quad \text{subject to} \quad
+\det(F') = 0
+$$
 
 ![image](https://user-images.githubusercontent.com/67038853/192242394-ef606bc4-424e-4a29-b245-49c5e45e7e04.png)
 
 한번더 SVD를 하여 가장 작은 singular value값을 0으로 두어 rank를 2로 강제할 수 있다. 
 
-1. Homogeneous, 2. F의 rank=2 이므로 F의 DOF는 7이다. 왜냐면 1번에 의해 DOF가 8이 되고, 2에 의해서 F의 determinant가 0이 되는데, $det F = (f1*f5*f8)+(f2*f6*f7)+(f3*f4*f8)-(f3*f5*f7)-(f2*f4*f9)-(f1*f6*f8)=0$에서  $f9=a*f8+b, f9=c*f8+d$ 두 식을 이용해서 f8,f9를 구할 수 있다. a,b,c,d는 f1~f7에 의해서 결정된다. 따라서 7개의 parameter만이 남게 되는것이다.
+F matrix는 homogeneous하고 rank가 2이므로 DOF는 7이다. Homogeneous 조건에 의해 DOF가 8이 되고, rank-2 조건에 의해 determinant가 0이 된다.
+
+$$
+\det(F) = 0
+$$
+
+$f_9 = a f_8 + b$, $f_9 = c f_8 + d$ 두 식을 이용해서 $f_8$, $f_9$를 구할 수 있다. $a$, $b$, $c$, $d$는 $f_1, \ldots, f_7$에 의해서 결정된다. 따라서 7개의 parameter만이 남게 되는 것이다.
 
 ![image](https://user-images.githubusercontent.com/67038853/192242676-31a4aca5-77df-48c8-a977-1eb5d6fbef23.png)
 
