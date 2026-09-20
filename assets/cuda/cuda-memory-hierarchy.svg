@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="980" viewBox="0 0 1200 980" role="img" aria-labelledby="title desc" lang="ko" xml:lang="ko">
+  <title id="title">CUDA 메모리 계층과 물리적 배치</title>
+  <desc id="desc">호스트 메모리, Device DRAM, L2 캐시, SM별 L1TEX 캐시와 공유 메모리, constant cache와 texture 기능, register file의 관계를 나타낸 개념도</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrow-blue" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2563eb"/>
+    </marker>
+    <marker id="arrow-green" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto-start-reverse" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 z" fill="#16a34a"/>
+    </marker>
+    <style>
+      .title { font: 700 32px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #0f172a; }
+      .section { font: 700 24px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #0f172a; }
+      .label { font: 700 23px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #0f172a; }
+      .body { font: 500 20px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #334155; }
+      .small { font: 500 18px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #475569; }
+      .white { fill: #ffffff; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="980" rx="24" fill="#f8fafc"/>
+  <text x="600" y="52" text-anchor="middle" class="title">CUDA Memory Hierarchy: 물리적 관점</text>
+  <text x="600" y="80" text-anchor="middle" class="body">메모리 공간(register/shared/global 등)과 하드웨어 캐시(L1/L2)는 같은 분류가 아니다.</text>
+
+  <rect x="40" y="105" width="1120" height="710" rx="24" fill="#eef2ff" stroke="#6366f1" stroke-width="3"/>
+  <text x="70" y="143" class="section">GPU Device</text>
+  <text x="1110" y="141" text-anchor="end" class="small">구조와 용량은 GPU 아키텍처에 따라 달라진다</text>
+
+  <rect x="78" y="165" width="1044" height="300" rx="20" fill="#ffffff" stroke="#0f766e" stroke-width="3"/>
+  <text x="104" y="202" class="section">Streaming Multiprocessor (SM) × N</text>
+
+  <rect x="110" y="220" width="980" height="58" rx="12" fill="#ccfbf1" stroke="#14b8a6" stroke-width="2"/>
+  <text x="130" y="246" class="label">Resident Thread Blocks</text>
+  <rect x="405" y="231" width="184" height="34" rx="8" fill="#ffffff" stroke="#14b8a6"/>
+  <text x="497" y="254" text-anchor="middle" class="body">Block 0: threads</text>
+  <rect x="607" y="231" width="184" height="34" rx="8" fill="#ffffff" stroke="#14b8a6"/>
+  <text x="699" y="254" text-anchor="middle" class="body">Block 1: threads</text>
+  <rect x="809" y="231" width="246" height="34" rx="8" fill="#ffffff" stroke="#14b8a6"/>
+  <text x="932" y="254" text-anchor="middle" class="body">… 동시 상주 block</text>
+
+  <rect x="110" y="307" width="280" height="124" rx="14" fill="#fee2e2" stroke="#ef4444" stroke-width="2"/>
+  <text x="250" y="341" text-anchor="middle" class="label">Register File</text>
+  <text x="250" y="372" text-anchor="middle" class="body">각 thread에 일부 할당</text>
+  <text x="250" y="399" text-anchor="middle" class="small">compiler-managed · on-chip</text>
+  <text x="250" y="420" text-anchor="middle" class="small">저장 공간이며 cache가 아님</text>
+
+  <rect x="420" y="307" width="402" height="124" rx="14" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="621" y="337" text-anchor="middle" class="label">L1TEX / Shared 자원</text>
+  <rect x="440" y="352" width="168" height="59" rx="10" fill="#eff6ff" stroke="#60a5fa"/>
+  <text x="524" y="377" text-anchor="middle" class="body">L1TEX Cache</text>
+  <text x="524" y="399" text-anchor="middle" class="small" style="font-size:17px">hardware-managed</text>
+  <rect x="626" y="352" width="176" height="59" rx="10" fill="#eff6ff" stroke="#60a5fa"/>
+  <text x="714" y="377" text-anchor="middle" class="body">Shared Memory</text>
+  <text x="714" y="399" text-anchor="middle" class="small" style="font-size:16px">programmer-managed</text>
+  <text x="621" y="452" text-anchor="middle" class="small">L1/texture cache와 shared의 구성은 아키텍처·설정에 따라 달라질 수 있음</text>
+
+  <rect x="852" y="307" width="238" height="124" rx="14" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+  <text x="971" y="338" text-anchor="middle" class="label" style="font-size:21px">Read-only 기능 / 경로</text>
+  <text x="971" y="370" text-anchor="middle" class="body">Constant Cache</text>
+  <text x="971" y="397" text-anchor="middle" class="body">Texture addressing</text>
+  <text x="971" y="420" text-anchor="middle" class="small">별도 DRAM 공간이 아님</text>
+
+  <line x1="250" y1="278" x2="250" y2="301" stroke="#334155" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <line x1="620" y1="278" x2="620" y2="301" stroke="#334155" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <line x1="971" y1="278" x2="971" y2="301" stroke="#334155" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <rect x="78" y="505" width="1044" height="84" rx="16" fill="#e0e7ff" stroke="#4f46e5" stroke-width="3"/>
+  <text x="600" y="541" text-anchor="middle" class="label">L2 Cache — 모든 SM이 공유</text>
+  <text x="600" y="570" text-anchor="middle" class="body">Device-memory request를 GPU 전체 범위에서 cache · shared 적재는 thread가 명시적으로 수행</text>
+
+  <line x1="500" y1="499" x2="500" y2="470" stroke="#2563eb" stroke-width="3" marker-end="url(#arrow-blue)"/>
+  <line x1="548" y1="470" x2="548" y2="499" stroke="#2563eb" stroke-width="3" marker-end="url(#arrow-blue)"/>
+  <line x1="690" y1="499" x2="690" y2="470" stroke="#2563eb" stroke-width="3" stroke-dasharray="6 5" marker-end="url(#arrow-blue)"/>
+  <line x1="738" y1="470" x2="738" y2="499" stroke="#2563eb" stroke-width="3" stroke-dasharray="6 5" marker-end="url(#arrow-blue)"/>
+  <line x1="948" y1="499" x2="948" y2="470" stroke="#2563eb" stroke-width="3" marker-end="url(#arrow-blue)"/>
+  <line x1="996" y1="470" x2="996" y2="499" stroke="#2563eb" stroke-width="3" marker-end="url(#arrow-blue)"/>
+
+  <rect x="78" y="630" width="1044" height="142" rx="18" fill="#f1f5f9" stroke="#475569" stroke-width="3"/>
+  <text x="600" y="665" text-anchor="middle" class="label">Device DRAM (큰 용량 · 높은 접근 비용)</text>
+  <rect x="104" y="688" width="240" height="60" rx="10" fill="#ffffff" stroke="#64748b"/>
+  <text x="224" y="714" text-anchor="middle" class="body">Global Memory</text>
+  <text x="224" y="738" text-anchor="middle" class="small">cudaMalloc allocation</text>
+  <rect x="364" y="688" width="224" height="60" rx="10" fill="#ffffff" stroke="#64748b"/>
+  <text x="476" y="714" text-anchor="middle" class="body">Local Memory backing</text>
+  <text x="476" y="738" text-anchor="middle" class="small">spill · thread-local array</text>
+  <rect x="608" y="688" width="230" height="60" rx="10" fill="#ffffff" stroke="#64748b"/>
+  <text x="723" y="714" text-anchor="middle" class="body">Constant backing</text>
+  <text x="723" y="738" text-anchor="middle" class="small">kernel에서는 read-only</text>
+  <rect x="858" y="688" width="238" height="60" rx="10" fill="#ffffff" stroke="#64748b"/>
+  <text x="977" y="714" text-anchor="middle" class="body">Texture resource backing</text>
+  <text x="977" y="738" text-anchor="middle" class="small">array · linear · pitched</text>
+
+  <line x1="520" y1="624" x2="520" y2="594" stroke="#2563eb" stroke-width="3" marker-end="url(#arrow-blue)"/>
+  <line x1="680" y1="594" x2="680" y2="624" stroke="#2563eb" stroke-width="3" marker-end="url(#arrow-blue)"/>
+
+  <rect x="260" y="855" width="680" height="82" rx="16" fill="#dcfce7" stroke="#16a34a" stroke-width="2.5"/>
+  <text x="600" y="888" text-anchor="middle" class="label">Host System Memory (CPU RAM)</text>
+  <text x="600" y="917" text-anchor="middle" class="body">cudaMemcpy / Unified Memory migration 등을 통해 device와 데이터 이동</text>
+  <line x1="600" y1="850" x2="600" y2="781" stroke="#16a34a" stroke-width="3" stroke-dasharray="8 6" marker-start="url(#arrow-green)" marker-end="url(#arrow-green)"/>
+  <text x="622" y="829" class="small">PCIe / NVLink</text>
+
+  <text x="600" y="966" text-anchor="middle" class="small">개념도: 실제 cache 경로와 용량, L1/shared 구성은 compute capability 및 GPU 모델에 따라 달라진다.</text>
+</svg>

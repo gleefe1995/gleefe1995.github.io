@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="560" viewBox="0 0 1200 560">
+  <style>
+    .title { font: 700 25px sans-serif; fill: #172033; }
+    .label { font: 600 20px sans-serif; fill: #172033; }
+    .small { font: 16px sans-serif; fill: #39445a; }
+    .cell { font: 700 30px sans-serif; fill: #172033; text-anchor: middle; dominant-baseline: middle; }
+    .value { font: 18px monospace; fill: #172033; text-anchor: middle; dominant-baseline: middle; }
+    .arrow { stroke: #4b5870; stroke-width: 5; fill: none; marker-end: url(#head); }
+    .grid { stroke: #26344d; stroke-width: 2; }
+  </style>
+  <defs>
+    <marker id="head" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <path d="M0,0 L10,4 L0,8 Z" fill="#4b5870"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="560" fill="#ffffff"/>
+
+  <text x="190" y="48" class="title" text-anchor="middle">1. 입력 행렬</text>
+  <text x="600" y="48" class="title" text-anchor="middle">2. 블록 위치 전치</text>
+  <text x="1010" y="48" class="title" text-anchor="middle">3. 블록 내부 전치</text>
+
+  <!-- Input block matrix -->
+  <g transform="translate(70,85)">
+    <rect x="0" y="0" width="120" height="120" fill="#b9d9ff" class="grid"/>
+    <rect x="120" y="0" width="120" height="120" fill="#9fe1d3" class="grid"/>
+    <rect x="0" y="120" width="120" height="120" fill="#ffc78f" class="grid"/>
+    <rect x="120" y="120" width="120" height="120" fill="#cfb9ee" class="grid"/>
+    <text x="60" y="60" class="cell">A</text><text x="180" y="60" class="cell">B</text>
+    <text x="60" y="180" class="cell">C</text><text x="180" y="180" class="cell">D</text>
+  </g>
+
+  <path d="M335 205 H445" class="arrow"/>
+  <text x="390" y="185" class="small" text-anchor="middle">blockIdx.x ↔ blockIdx.y</text>
+
+  <!-- Swapped block matrix -->
+  <g transform="translate(480,85)">
+    <rect x="0" y="0" width="120" height="120" fill="#b9d9ff" class="grid"/>
+    <rect x="120" y="0" width="120" height="120" fill="#ffc78f" class="grid"/>
+    <rect x="0" y="120" width="120" height="120" fill="#9fe1d3" class="grid"/>
+    <rect x="120" y="120" width="120" height="120" fill="#cfb9ee" class="grid"/>
+    <text x="60" y="60" class="cell">A</text><text x="180" y="60" class="cell">C</text>
+    <text x="60" y="180" class="cell">B</text><text x="180" y="180" class="cell">D</text>
+  </g>
+
+  <path d="M745 205 H855" class="arrow"/>
+  <text x="800" y="185" class="small" text-anchor="middle">shared[y][x]</text>
+
+  <!-- Final transposed block matrix -->
+  <g transform="translate(890,85)">
+    <rect x="0" y="0" width="120" height="120" fill="#b9d9ff" class="grid"/>
+    <rect x="120" y="0" width="120" height="120" fill="#ffc78f" class="grid"/>
+    <rect x="0" y="120" width="120" height="120" fill="#9fe1d3" class="grid"/>
+    <rect x="120" y="120" width="120" height="120" fill="#cfb9ee" class="grid"/>
+    <text x="60" y="60" class="cell">Aᵀ</text><text x="180" y="60" class="cell">Cᵀ</text>
+    <text x="60" y="180" class="cell">Bᵀ</text><text x="180" y="180" class="cell">Dᵀ</text>
+  </g>
+
+  <text x="600" y="370" class="title" text-anchor="middle">타일 하나에서 shared memory가 하는 일</text>
+  <g transform="translate(245,405)">
+    <rect x="0" y="0" width="90" height="55" fill="#eaf2ff" class="grid"/><rect x="90" y="0" width="90" height="55" fill="#eaf2ff" class="grid"/>
+    <rect x="0" y="55" width="90" height="55" fill="#eaf2ff" class="grid"/><rect x="90" y="55" width="90" height="55" fill="#eaf2ff" class="grid"/>
+    <text x="45" y="28" class="value">a00</text><text x="135" y="28" class="value">a01</text>
+    <text x="45" y="83" class="value">a10</text><text x="135" y="83" class="value">a11</text>
+  </g>
+  <path d="M450 460 H725" class="arrow"/>
+  <text x="588" y="438" class="small" text-anchor="middle">shared[x][y]에 저장 → shared[y][x]로 읽기</text>
+  <g transform="translate(750,405)">
+    <rect x="0" y="0" width="90" height="55" fill="#eaf2ff" class="grid"/><rect x="90" y="0" width="90" height="55" fill="#eaf2ff" class="grid"/>
+    <rect x="0" y="55" width="90" height="55" fill="#eaf2ff" class="grid"/><rect x="90" y="55" width="90" height="55" fill="#eaf2ff" class="grid"/>
+    <text x="45" y="28" class="value">a00</text><text x="135" y="28" class="value">a10</text>
+    <text x="45" y="83" class="value">a01</text><text x="135" y="83" class="value">a11</text>
+  </g>
+  <text x="335" y="540" class="small" text-anchor="middle">Global Memory → Shared Memory</text>
+  <text x="840" y="540" class="small" text-anchor="middle">Shared Memory → Global Memory</text>
+</svg>

@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc" lang="ko" xml:lang="ko">
+  <title id="title">CUDA 메모리 공간의 접근 범위와 수명</title>
+  <desc id="desc">Grid, thread block, thread의 중첩 구조 안에서 register, local, shared, global, constant, texture memory의 접근 범위와 수명을 나타낸 그림</desc>
+  <defs>
+    <style>
+      .title { font: 700 32px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #0f172a; }
+      .section { font: 700 24px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #0f172a; }
+      .label { font: 700 22px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #0f172a; }
+      .body { font: 500 19px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #334155; }
+      .small { font: 500 18px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #475569; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="800" rx="24" fill="#f8fafc"/>
+  <text x="600" y="52" text-anchor="middle" class="title">CUDA Memory Space: 접근 범위와 수명</text>
+
+  <rect x="44" y="84" width="1112" height="665" rx="24" fill="#eef2ff" stroke="#4f46e5" stroke-width="3"/>
+  <text x="70" y="122" class="section">Grid — 한 번의 kernel launch</text>
+  <text x="1125" y="120" text-anchor="end" class="body">모든 thread가 global / constant / texture 경로에 접근</text>
+
+  <rect x="78" y="148" width="510" height="372" rx="20" fill="#ffffff" stroke="#0f766e" stroke-width="3"/>
+  <text x="104" y="184" class="section">Thread Block 0</text>
+  <rect x="108" y="204" width="450" height="78" rx="13" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="333" y="234" text-anchor="middle" class="label">Shared Memory</text>
+  <text x="333" y="261" text-anchor="middle" class="body">이 block의 thread들이 공유 · block 수명</text>
+
+  <rect x="108" y="306" width="210" height="178" rx="15" fill="#fef2f2" stroke="#ef4444" stroke-width="2"/>
+  <text x="213" y="338" text-anchor="middle" class="label">Thread 0</text>
+  <rect x="130" y="357" width="166" height="46" rx="9" fill="#fee2e2" stroke="#f87171"/>
+  <text x="213" y="386" text-anchor="middle" class="body">Registers</text>
+  <rect x="130" y="417" width="166" height="46" rx="9" fill="#f1f5f9" stroke="#64748b"/>
+  <text x="213" y="446" text-anchor="middle" class="body">Local (logical)</text>
+
+  <rect x="348" y="306" width="210" height="178" rx="15" fill="#fef2f2" stroke="#ef4444" stroke-width="2"/>
+  <text x="453" y="338" text-anchor="middle" class="label">Thread 1 …</text>
+  <rect x="370" y="357" width="166" height="46" rx="9" fill="#fee2e2" stroke="#f87171"/>
+  <text x="453" y="386" text-anchor="middle" class="body">Registers</text>
+  <rect x="370" y="417" width="166" height="46" rx="9" fill="#f1f5f9" stroke="#64748b"/>
+  <text x="453" y="446" text-anchor="middle" class="body">Local (logical)</text>
+
+  <rect x="612" y="148" width="510" height="372" rx="20" fill="#ffffff" stroke="#0f766e" stroke-width="3"/>
+  <text x="638" y="184" class="section">Thread Block 1 …</text>
+  <rect x="642" y="204" width="450" height="78" rx="13" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="867" y="234" text-anchor="middle" class="label">별도의 Shared Memory</text>
+  <text x="867" y="261" text-anchor="middle" class="body">다른 block에서는 기본적으로 직접 접근 불가</text>
+
+  <rect x="642" y="306" width="210" height="178" rx="15" fill="#fef2f2" stroke="#ef4444" stroke-width="2"/>
+  <text x="747" y="338" text-anchor="middle" class="label">Thread 0</text>
+  <rect x="664" y="357" width="166" height="46" rx="9" fill="#fee2e2" stroke="#f87171"/>
+  <text x="747" y="386" text-anchor="middle" class="body">Registers</text>
+  <rect x="664" y="417" width="166" height="46" rx="9" fill="#f1f5f9" stroke="#64748b"/>
+  <text x="747" y="446" text-anchor="middle" class="body">Local (logical)</text>
+
+  <rect x="882" y="306" width="210" height="178" rx="15" fill="#fef2f2" stroke="#ef4444" stroke-width="2"/>
+  <text x="987" y="338" text-anchor="middle" class="label">Thread 1 …</text>
+  <rect x="904" y="357" width="166" height="46" rx="9" fill="#fee2e2" stroke="#f87171"/>
+  <text x="987" y="386" text-anchor="middle" class="body">Registers</text>
+  <rect x="904" y="417" width="166" height="46" rx="9" fill="#f1f5f9" stroke="#64748b"/>
+  <text x="987" y="446" text-anchor="middle" class="body">Local (logical)</text>
+
+  <rect x="78" y="550" width="1044" height="158" rx="18" fill="#fef3c7" stroke="#d97706" stroke-width="2.5"/>
+  <text x="600" y="583" text-anchor="middle" class="label">Grid-wide addressability</text>
+  <rect x="106" y="603" width="306" height="76" rx="11" fill="#ffffff" stroke="#d97706"/>
+  <text x="259" y="631" text-anchor="middle" class="label">Global Memory</text>
+  <text x="259" y="658" text-anchor="middle" class="small">모든 thread · allocation부터 free까지</text>
+  <rect x="447" y="603" width="306" height="76" rx="11" fill="#ffffff" stroke="#d97706"/>
+  <text x="600" y="631" text-anchor="middle" class="label">Constant Memory</text>
+  <text x="600" y="658" text-anchor="middle" class="small">kernel read-only · host가 symbol 갱신</text>
+  <rect x="788" y="603" width="306" height="76" rx="11" fill="#ffffff" stroke="#d97706"/>
+  <text x="941" y="631" text-anchor="middle" class="label">Texture Access</text>
+  <text x="941" y="658" text-anchor="middle" class="small">read-only fetch · resource 수명</text>
+
+  <text x="600" y="777" text-anchor="middle" class="body">주의: local은 “thread 전용 주소 공간”이라는 뜻이며, 물리적으로는 보통 Device DRAM에 놓이고 L1/L2에 cache된다.</text>
+</svg>
